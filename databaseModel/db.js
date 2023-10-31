@@ -11,14 +11,6 @@ const sequelize = new Sequelize ( 'course' , 'root' , 'hengrui123' , {
     logging : false ,
 } );
 
-// 测试数据库连接
-( async function () {
-    try {
-        await sequelize.authenticate ();
-        console.log ( 'Connection has been established successfully.' );
-    } catch ( error ) {
-        console.error ( 'Unable to connect to the database:' , error );
-    }
-} ) ()
+
 
 module.exports = sequelize;
