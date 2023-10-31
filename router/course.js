@@ -1,6 +1,10 @@
 const express = require ( "express" );
 const { formatResponse } = require ( "../utils/responseFormat" );
-const { findAllCourseService , modifyCourseInformationService } = require ( "../serviceLayer/course" );
+const {
+    findAllCourseService ,
+    modifyCourseInformationService ,
+    addCourseService , deleteCourseInformationService
+} = require ( "../serviceLayer/course" );
 
 const router = express.Router ();
 
@@ -16,6 +20,22 @@ router.put ( '/:id' , async ( req , res ) => {
     try {
         const data = await modifyCourseInformationService ( req.params.id , req.body );
         res.send ( formatResponse ( 1 , '课程数据更新成功' , data ) )
+    } catch ( e ) {
+        res.send ( formatResponse ( 0 , e , null ) )
+    }
+} )
+
+// 添加一门课程
+router.post ( '/' , async ( req , res ) => {
+    const data = await addCourseService ( req.body );
+    res.send ( formatResponse ( 1 , '添加课程成功' , data ) )
+} )
+
+// 删除课程
+router.delete ( '/:id' , async ( req , res , ) => {
+    try {
+        const data = await deleteCourseInformationService ( req.params.id );
+        res.send ( formatResponse ( 1 , data , null ) )
     } catch ( e ) {
         res.send ( formatResponse ( 0 , e , null ) )
     }

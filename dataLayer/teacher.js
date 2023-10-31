@@ -20,3 +20,18 @@ module.exports.modifyTeacherInformation = async ( teacherId , newData ) => {
         return Promise.reject ( "教师信息更新失败" )
     }
 }
+
+// 添加一名教师
+module.exports.addTeacher = async ( teacherInfo ) => {
+    const res = await teacher.create ( teacherInfo );
+    return res.toJSON ();
+}
+
+// 删除教师信息
+module.exports.deleteTeacherInformation = async ( teacherId ) => {
+    const whereOptions = {
+        where : { teacherId }
+    }
+    return await teacher.destroy ( whereOptions )
+
+}
