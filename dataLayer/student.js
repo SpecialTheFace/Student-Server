@@ -21,3 +21,16 @@ module.exports.modifyStudentInformation = async ( studentId , newData ) => {
     }
 }
 
+// 删除学生信息
+module.exports.deleteStudentInformation = async ( studentId ) => {
+    const whereOptions = {
+        where : { studentId }
+    }
+    const rowsUpdated = await student.destroy ( whereOptions )
+    if ( rowsUpdated>0 ) {
+        return Promise.resolve ( "学生信息删除成功" )
+    } else {
+        return Promise.reject ( "学生信息删除失败" )
+    }
+}
+

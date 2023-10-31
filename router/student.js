@@ -1,5 +1,9 @@
 const express = require ( "express" );
-const { findAllStudentService , modifyStudentInformationService } = require ( "../serviceLayer/student" );
+const {
+    findAllStudentService ,
+    modifyStudentInformationService ,
+    deleteStudentInformationService
+} = require ( "../serviceLayer/student" );
 const { formatResponse } = require ( "../utils/responseFormat" );
 
 const router = express.Router ();
@@ -21,4 +25,13 @@ router.put ( '/:id' , async ( req , res ) => {
     }
 } )
 
+// 删除学生信息
+router.delete ( '/:id' , async ( req , res , ) => {
+    try {
+        const data = await deleteStudentInformationService ( req.params.id );
+        res.send ( formatResponse ( 1 , data , null ) )
+    } catch ( e ) {
+        res.send ( formatResponse ( 0 , e , null ) )
+    }
+} )
 module.exports = router;
