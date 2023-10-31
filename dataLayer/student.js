@@ -20,3 +20,4 @@ module.exports.modifyStudentInformation = async ( studentId , newData ) => {
         return Promise.reject ( "学生信息更新失败" )
     }
 }
+
