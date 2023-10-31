@@ -10,7 +10,6 @@ const Course = sequelize.define ( 'Course' , {
         autoIncrement : true ,
     } ,
     CourseName : Sequelize.STRING ,
-    TeacherID : Sequelize.INTEGER ,
 } );
 
 module.exports = Course;

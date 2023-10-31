@@ -2,7 +2,7 @@ const express = require ( "express" );
 const {
     findAllStudentService ,
     modifyStudentInformationService ,
-    deleteStudentInformationService
+    deleteStudentInformationService , addStudentService
 } = require ( "../serviceLayer/student" );
 const { formatResponse } = require ( "../utils/responseFormat" );
 
@@ -14,6 +14,13 @@ router.get ( '/' , async ( req , res ) => {
     const data = await findAllStudentService ();
     res.send ( formatResponse ( 1 , '学生数据获取成功' , data ) );
 } )
+
+// 添加一名学生
+router.post ( '/' , async ( req , res ) => {
+    const data = await addStudentService ( req.body );
+    res.send ( formatResponse ( 1 , '添加学生成功' , data ) )
+} )
+
 
 // 修改学生信息
 router.put ( '/:id' , async ( req , res ) => {

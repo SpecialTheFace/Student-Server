@@ -14,7 +14,6 @@ const Student = sequelize.define ( 'Student' , {
     PhoneNumber : Sequelize.STRING ,
     Email : Sequelize.STRING ,
     AdmissionDate : Sequelize.DATE ,
-    ClassID : Sequelize.INTEGER ,
 } );
 
 // 模型导出
